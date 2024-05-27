@@ -1,0 +1,5 @@
+package com.example.rentify.repositories;
+
+public class UserRepo {
+
+}

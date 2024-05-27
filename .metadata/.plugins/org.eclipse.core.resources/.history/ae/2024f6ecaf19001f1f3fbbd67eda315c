@@ -1,0 +1,12 @@
+package com.example.rentify.entities;
+
+@Entity
+public class Interested {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private Long buyerId;
+    private Long propertyId;
+
+    // getters and setters
+}

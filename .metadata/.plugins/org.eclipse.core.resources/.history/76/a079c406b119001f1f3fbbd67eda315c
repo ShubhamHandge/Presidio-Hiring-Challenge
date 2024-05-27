@@ -1,0 +1,23 @@
+package com.example.rentify.services;
+
+@Service
+public class PropertyService {
+    @Autowired
+    private PropertyRepository propertyRepository;
+
+    public Property saveProperty(Property property) {
+        return propertyRepository.save(property);
+    }
+
+    public List<Property> getPropertiesBySeller(Long sellerId) {
+        return propertyRepository.findBySellerId(sellerId);
+    }
+
+    public void deleteProperty(Long propertyId) {
+        propertyRepository.deleteById(propertyId);
+    }
+
+    public List<Property> getAllProperties() {
+        return propertyRepository.findAll();
+    }
+}

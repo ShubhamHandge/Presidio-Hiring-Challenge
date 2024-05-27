@@ -1,0 +1,15 @@
+package com.example.rentify.services;
+
+@Service
+public class InterestedService {
+    @Autowired
+    private InterestedRepository interestedRepository;
+
+    public Interested saveInterested(Interested interested) {
+        return interestedRepository.save(interested);
+    }
+
+    public List<Interested> getInterestedByProperty(Long propertyId) {
+        return interestedRepository.findByPropertyId(propertyId);
+    }
+}

@@ -1,0 +1,19 @@
+package com.example.rentify.controllers;
+
+@RestController
+@RequestMapping("/api/auth")
+public class AuthController {
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/register")
+    public ResponseEntity<?> registerUser(@RequestBody User user) {
+        if (userService.findByEmail(user.getEmail()) != null) {
+            return new ResponseEntity<>("Email already in use", HttpStatus.BAD_REQUEST);
+        }
+        userService.saveUser(user);
+        return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
+    }
+
+    // Additional authentication endpoints...
+}

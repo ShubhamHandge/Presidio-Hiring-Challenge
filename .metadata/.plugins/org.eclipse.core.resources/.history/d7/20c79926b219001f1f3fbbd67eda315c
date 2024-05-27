@@ -1,0 +1,19 @@
+package com.example.rentify.controllers;
+
+@RestController
+@RequestMapping("/api/interested")
+public class InterestedController {
+    @Autowired
+    private InterestedService interestedService;
+
+    @PostMapping("/add")
+    public ResponseEntity<?> addInterested(@RequestBody Interested interested) {
+        interestedService.saveInterested(interested);
+        return new ResponseEntity<>("Interested added successfully", HttpStatus.OK);
+    }
+
+    @GetMapping("/property/{propertyId}")
+    public List<Interested> getInterestedByProperty(@PathVariable Long propertyId) {
+        return interestedService.getInterestedByProperty(propertyId);
+    }
+}

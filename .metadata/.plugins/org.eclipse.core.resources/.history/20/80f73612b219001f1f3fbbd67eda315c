@@ -1,0 +1,32 @@
+package com.example.rentify.controllers;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/properties")
+public class PropertyController {
+    @Autowired
+    private PropertyService propertyService;
+
+    @PostMapping("/add")
+    public ResponseEntity<?> addProperty(@RequestBody Property property) {
+        propertyService.saveProperty(property);
+        return new ResponseEntity<>("Property added successfully", HttpStatus.OK);
+    }
+
+    @GetMapping("/seller/{sellerId}")
+    public List<Property> getPropertiesBySeller(@PathVariable Long sellerId) {
+        return propertyService.getPropertiesBySeller(sellerId);
+    }
+
+    @DeleteMapping("/delete/{propertyId}")
+    public ResponseEntity<?> deleteProperty(@PathVariable Long propertyId) {
+        propertyService.deleteProperty(propertyId);
+        return new ResponseEntity<>("Property deleted successfully", HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public List<Property> getAllProperties() {
+        return propertyService.getAllProperties();
+    }
+}

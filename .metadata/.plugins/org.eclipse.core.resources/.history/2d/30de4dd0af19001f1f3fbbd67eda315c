@@ -1,0 +1,5 @@
+package com.example.rentify.entities;
+
+public class Property {
+
+}
